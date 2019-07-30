@@ -144,7 +144,6 @@ public class WebVuwController: NSObject, FlutterPlatformView, FlutterStreamHandl
                 if let httpMethod = params[HTTP_METHOD] as? String {
                   customRequest.httpMethod = httpMethod
                    if let body = params[BODY] as? String {
-                    print(body)
                     customRequest.httpBody = body.data(using: .utf8)
                    }
                 }
