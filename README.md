@@ -146,7 +146,15 @@ Stream onEvents;
 
 ## Http Method
 
-example
+### usage
+
+```
+web_vuw:
+  git:
+    url: git://github.com/qkuronekop/Web_Vuw.git
+```
+
+### example
 
 ```
 WebVuw(
