@@ -12,6 +12,8 @@ enum FlutterMethodName: String {
     case evaluateJavascript
     case reload
     case loadHtml
+    case httpMethod
+    case body
 }
 
 public class WebVuwFactory : NSObject, FlutterPlatformViewFactory {
@@ -48,6 +50,8 @@ public class WebVuwController: NSObject, FlutterPlatformView, FlutterStreamHandl
     let HTML = "html"
     let ENABLE_JAVA_SCRIPT = "enableJavascript"
     let ENABLE_LOCAL_STORAGE = "enableLocalStorage"
+    let HTTP_METHOD = "http_method"
+    let BODY = "body"
     
     
     
@@ -137,6 +141,22 @@ public class WebVuwController: NSObject, FlutterPlatformView, FlutterStreamHandl
                         }
                     }
                 }
+                if let httpMethod = params[HTTP_METHOD] as? String {
+                  customRequest.httpMethod = httpMethod
+                   if let body = params[BODY] as? NSDictionary {
+                     var bodyData = ""
+                     for (key, value) in body {
+                       if let val = value as? String {
+                         if let field = key as? String {
+                           bodyData.append(val)
+                           bodyData.append("=")
+                           bodyData.append(field)
+                           bodyData.append("&")
+                         }
+                       }
+                     }
+                   }
+                }
                 wkWebVuw.load(customRequest)
             }else if let html = params[HTML] as? String {
                 wkWebVuw.loadHTMLString(html, baseURL: nil)
@@ -180,6 +200,8 @@ public class WebVuwController: NSObject, FlutterPlatformView, FlutterStreamHandl
                 reload(call, result)
             case .loadHtml:
                 onLoadHTML(call, result)
+            default:
+                onLoadURL(call, result)
             }
         }
     }
