@@ -86,7 +86,9 @@ class WebVuw extends StatefulWidget {
       this.javaScriptMode = JavaScriptMode.disabled,
       this.gestureRecognizers,
       this.html,
-      this.pullToRefresh})
+      this.pullToRefresh,
+      this.httpMethod,
+      this.body})
       : assert(javaScriptMode != null),
         super(key: key);
 
@@ -100,6 +102,8 @@ class WebVuw extends StatefulWidget {
   final String initialUrl;
   final String html;
   final bool pullToRefresh;
+  final String httpMethod;
+  final String body;
 
   final JavaScriptMode javaScriptMode;
 
@@ -208,7 +212,9 @@ class _CreationParams {
       this.userAgent,
       this.settings,
       this.html,
-      this.pullToRefresh});
+      this.pullToRefresh,
+      this.httpMethod,
+      this.body});
 
   static _CreationParams fromWidget(WebVuw widget) {
     return _CreationParams(
@@ -219,7 +225,9 @@ class _CreationParams {
         userAgent: widget.userAgent,
         settings: _WebSettings.fromWidget(widget),
         html: widget.html,
-        pullToRefresh: widget.pullToRefresh);
+        pullToRefresh: widget.pullToRefresh,
+        httpMethod: widget.httpMethod,
+        body: widget.body);
   }
 
   final String initialUrl;
@@ -230,6 +238,8 @@ class _CreationParams {
   final String userAgent;
   final String html;
   final bool pullToRefresh;
+  final String httpMethod;
+  final String body;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -240,7 +250,9 @@ class _CreationParams {
       'userAgent': userAgent,
       'settings': settings.toMap(),
       'html': html,
-      'pullToRefresh': pullToRefresh
+      'pullToRefresh': pullToRefresh,
+      'httpMethod': httpMethod,
+      'body': body
     };
   }
 }
