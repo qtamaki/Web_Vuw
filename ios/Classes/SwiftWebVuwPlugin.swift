@@ -50,7 +50,7 @@ public class WebVuwController: NSObject, FlutterPlatformView, FlutterStreamHandl
     let HTML = "html"
     let ENABLE_JAVA_SCRIPT = "enableJavascript"
     let ENABLE_LOCAL_STORAGE = "enableLocalStorage"
-    let HTTP_METHOD = "http_method"
+    let HTTP_METHOD = "httpMethod"
     let BODY = "body"
     
     
