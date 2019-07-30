@@ -143,3 +143,31 @@ Future<dynamic> evaluateJavascript(String javascriptString);
 ```dart
 Stream onEvents;
 ```
+
+## Http Method
+
+### usage
+
+```
+web_vuw:
+  git:
+    url: git://github.com/qkuronekop/Web_Vuw.git
+```
+
+### example
+
+```
+WebVuw(
+initialUrl: 'https://example.com/api/example',
+enableJavascript: true,
+javaScriptMode: JavaScriptMode.unrestricted,
+header: {
+  'Content-Type': 'application/json',
+},
+onWebViewCreated: (controller) {
+  // processing
+},
+httpMethod: 'POST',
+body: json.encode(request.toJson()),
+)
+```
