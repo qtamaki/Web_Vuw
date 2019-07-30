@@ -143,18 +143,8 @@ public class WebVuwController: NSObject, FlutterPlatformView, FlutterStreamHandl
                 }
                 if let httpMethod = params[HTTP_METHOD] as? String {
                   customRequest.httpMethod = httpMethod
-                   if let body = params[BODY] as? NSDictionary {
-                     var bodyData = ""
-                     for (key, value) in body {
-                       if let val = value as? String {
-                         if let field = key as? String {
-                           bodyData.append(val)
-                           bodyData.append("=")
-                           bodyData.append(field)
-                           bodyData.append("&")
-                         }
-                       }
-                     }
+                   if let body = params[BODY] as? String {
+                    customRequest.httpBody = body.data(using: .utf8)
                    }
                 }
                 wkWebVuw.load(customRequest)
