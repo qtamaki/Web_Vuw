@@ -146,6 +146,8 @@ Stream onEvents;
 
 ## Http Method
 
+iOS Only.　
+
 ### usage
 
 ```
